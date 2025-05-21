@@ -1,0 +1,55 @@
+main {
+    min-width: 68.625rem;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6.75rem;
+
+    & #left-side {
+        gap: 2.375rem;
+        flex-direction: column;
+    }
+
+    & .title {
+        & .overline {
+            display: inline-block;
+            margin-bottom: .75rem;
+        }
+    }
+
+    & .help {
+        max-width: 25rem;
+        flex-direction: column;
+        gap: 2.25rem;
+
+        & > div {
+            gap: .5rem;
+            align-items: flex-start;
+
+            & .p-medium {
+                color: var(--content-brand);
+                font-size: var(--fs-par-md);
+            }
+
+            & .p-small {
+                font-size: var(--fs-par-sm);
+            }
+        }
+    }
+
+    & #right-side {
+        & form {
+            & fieldset {
+                border: none;
+
+                & legend {
+                    font-size: var(--fs-lb-md);
+                    font-weight: var(--fw-bold);
+                }
+
+                & p {
+                    font-size: var(--fs-par-md);
+                }
+            }
+        }
+    }
+}

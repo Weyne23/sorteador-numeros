@@ -1,0 +1,11 @@
+header {
+    align-items: center;
+    gap: 0.6875rem;
+    justify-content: flex-start;
+    margin-bottom: 5.5625rem;
+    & h3 {
+        font-size: 1.5rem;
+        font-weight: var(--fw-ex-bold);
+        font-family: var(--ff-sora);
+    }
+}
