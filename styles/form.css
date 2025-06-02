@@ -1,0 +1,11 @@
+form {
+    & fieldset {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    & #configure {
+        grid-template-columns: 86px 86px 86px;
+        gap: .75rem;
+    }
+}

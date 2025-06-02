@@ -41,11 +41,37 @@
             </div>
             <div id="right-side">
                 <form>
-                    <fieldset>
+                    <fieldset class="flex">
                         <div class="instructions">
                             <legend>QUERO SORTEAR:</legend>
                             <p>Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
                         </div>
+                        <div id="configure" class="grid">
+                            <div class="input-wrapper flex">
+                                <label for="quantity-sorted">NÚMEROS</label>
+                                <input type="text" value="2" id="quantity-sorted"
+                                name="quantity-sorted" >
+                            </div>
+                            <div class="input-wrapper flex">
+                                <label for="initial-number-sorted">DE</label>
+                                <input type="text" value="1" id="initial-number-sorted"
+                                name="initial-number-sorted">
+                            </div>
+                            <div class="input-wrapper flex">
+                                <label for="final-number-sorted">A</label>
+                                <div class="gradient">
+                                    <input type="text" value="100" id="final-number-sorted"
+                                    name="final-number-sorted">
+                                </div>
+                            </div>
+
+                            <div class="input-toggle-button-wrapper flex">
+                                <input type="checkbox" id="toggle-button" name="toggle-button">
+                                <label for="toggle-button">Não repetir número</label>
+                            </div>
+
+                        </div>
+                        <button>Sortear</button>
                     </fieldset>
                 </form>
             </div>
