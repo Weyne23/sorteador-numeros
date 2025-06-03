@@ -2,36 +2,26 @@ input {
     appearance: none;
     border: none;
     border-radius: .5rem;
+    outline: none;
     text-align: center;
     color: var(--content-primary);
-    background-color: var(--bg-color-secondary);
     font-size: var(--fs-dp-sm);
     font-family: var(--ff-sora);
     font-weight: var(--fw-ex-bold);
-    outline: 1px solid var(--bg-color-secondary);
     line-height: 200%;
-    transition: background-color 200ms ease;
+    transition: all 200ms ease;
+    background: var(--bg-color-secondary);
+    width: 83px;
+    height: 48px;
     
-    &:hover {
-        background-color: var(--bg-color-tertiary);
-        outline: 1px solid transparent;
+    &:hover, &:focus-within {
+        opacity: 1;
+        background: var(--bg-color-tertiary);
     }
 
-    &::after {
-        content: "";
-        position: absolute;
-        height: 85px;
-        width: 85px;
-        z-index: -1;
-        border-radius: inherit;
-        background: linear-gradient(
-            90deg,
-            var(--accent-green) 0%,
-            var(--accent-lime) 14.84%,
-            var(--accent-red) 32.15%,
-            var(--accent-pink) 65.79%,
-            var(--accent-blue) 84.58%
-        );
+    &:focus-within {
+        width: 80px;
+        height: 46px;
     }
 }
 
@@ -42,19 +32,140 @@ input {
     & label {
         font-size: var(--fs-lb-md);
         font-weight: var(--fw-bold);
-        transition: color 500ms linear;
+        transition: color 300ms linear;
+    }
+
+    &:hover label, &:focus-within label {
+        color: var(--bg-color-brand);
     }
 }
 
-.input-toggle-button-wrapper {
-    width: 161px;
-    gap: .5rem;
-    margin-top: calc(1.75rem - .75rem);
-    
-    & input {
-        all: unset;
-        background-color: aliceblue;
-        height: 1.25rem;
-        width: 1.875rem;
+.gradient {
+    width: 86px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 8px;
+    position: relative;
+    background: var(--bg-color-secondary);
+    transition: all 200ms ease;
+
+    &:hover {
+        background: linear-gradient(
+                90deg,
+                var(--accent-green) 0%,
+                var(--accent-lime) 14.84%,
+                var(--accent-red) 32.15%,
+                var(--accent-pink) 65.79%,
+                var(--accent-blue) 84.58%
+            );
     }
+
+    &:focus-within {
+        opacity: 1;
+        background: linear-gradient(
+                90deg,
+                var(--accent-green) 0%,
+                var(--accent-lime) 14.84%,
+                var(--accent-red) 32.15%,
+                var(--accent-pink) 65.79%,
+                var(--accent-blue) 84.58%
+            );
+    }
+
+    /* &::before {
+        content: "";
+        position: absolute;
+        border-radius: 8px;
+        background: linear-gradient(
+            90deg,
+            var(--accent-green) 0%,
+            var(--accent-lime) 14.84%,
+            var(--accent-red) 32.15%,
+            var(--accent-pink) 65.79%,
+            var(--accent-blue) 84.58%
+        );
+        z-index: -1;
+        inset: 0;
+    } */
+}
+
+.input-toggle-wrapper {
+    display: flex;
+    gap: 1rem;
+    width: 100vh;
+    align-items: center;
+}
+
+.input-toggle-button-wrapper {
+    align-items: center;
+    position: relative;
+    gap: 1rem;
+    padding-block: .75rem;
+
+    & label {
+        all: unset;
+        padding: 0.125rem;
+        width: 2rem;
+        height: 1.2rem;
+        background-color: transparent;
+        border-radius: 3.75rem;
+        transition: background 0.4s;
+    }
+
+    & label:before,
+    & label:after {
+        display: block;
+        position: absolute;
+        content: "";
+    }
+
+    & label:before {
+        top: -.1rem;
+        left: -.1rem;
+        bottom: -.12rem;
+        right: -.1rem;
+        background-color: var(--content-tertiary);
+        border-radius: 3.75rem;
+        transition: background 0.4s;
+    }
+    
+    & label:after {
+        top: 0.125rem;
+        left: 0.125rem;
+        bottom: 0.125rem;
+        right: 0.125rem;
+        width: 1.2rem;
+        background-color: var(--content-primary);
+        border-radius: 3.25rem;
+        transition: margin 0.4s, background 0.4s;
+    }
+
+
+    & input:checked + label:after {
+        margin-left: 10px;
+    }
+
+    & input:checked + label:before {
+        background: linear-gradient(
+            90deg,
+            var(--accent-pink) 0%,
+            var(--accent-blue) 98.93%
+        );
+    }
+}
+
+.switch {
+    visibility: hidden;
+    position: absolute;
+    margin-left: auto;
+}
+  
+.switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
 }

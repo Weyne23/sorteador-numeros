@@ -43,7 +43,7 @@ main {
 
                 & legend {
                     font-size: var(--fs-lb-md);
-                    font-weight: var(--fw-bold);
+                    font-weight: var(--fw-ex-bold);
                 }
 
                 & p {

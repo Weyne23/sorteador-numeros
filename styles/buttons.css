@@ -1,0 +1,58 @@
+button {
+    all: unset;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 100%;
+    font-weight: var(--fw-bold);
+    border-radius: .5rem;
+    padding-block: 1rem;
+    text-transform: uppercase;
+    background-color: var(--bg-color-tertiary);
+    transition: background-color 200ms ease;
+    &:hover {
+        background-color: var(--bg-color-secondary);
+
+        & img {
+            animation: arrowAnimation 1s linear infinite;
+        }
+    }
+}
+
+.button-gradient {
+    padding: 2px;
+    border-radius: 8px;
+    background-size: 200% 200%;
+    background-color: var(--bg-color-tertiary);
+
+    animation: myGradientAnimation 2s linear infinite;
+
+    &:hover {
+        background-image: linear-gradient(
+            90deg,
+            var(--accent-green) 0%,
+            var(--accent-lime) 14.84%,
+            var(--accent-red) 32.15%,
+            var(--accent-pink) 65.79%,
+            var(--accent-blue) 84.58%
+        );
+    }
+}
+
+@keyframes myGradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes arrowAnimation {
+    50% {
+        transform: translateX(10px);
+    }
+}
