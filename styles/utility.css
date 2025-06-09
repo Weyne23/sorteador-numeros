@@ -5,3 +5,15 @@
 .grid {
     display: grid;
 }
+
+.display-none{
+    display: none;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-1 {
+    opacity: 1;
+}

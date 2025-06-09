@@ -39,51 +39,71 @@
                     </div>
                 </div>
             </div>
-            <div id="right-side">
+            <div id="right-side" class="grid">
                 <form>
-                    <fieldset class="flex">
-                        <div class="instructions">
-                            <legend>QUERO SORTEAR:</legend>
-                            <p>Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
-                        </div>
-                        <div id="configure" class="grid">
-                            <div class="input-wrapper flex">
-                                <label for="quantity-sorted">NÚMEROS</label>
-                                <div class="gradient flex">
-                                    <input type="text" value="2" id="quantity-sorted"
-                                    name="quantity-sorted" >
-                                </div>
+                    <fieldset id="configurations">
+                        <div id="configure-options" class="flex">
+                            <div class="instructions">
+                                <legend>QUERO SORTEAR:</legend>
+                                <p class="p-small">Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
                             </div>
-                            <div class="input-wrapper flex">
-                                <label for="initial-number-sorted">DE</label>
-                                <div class="gradient flex">
-                                    <input type="text" value="1" id="initial-number-sorted"
-                                    name="initial-number-sorted">
+                            <div id="configure" class="grid">
+                                <div class="input-wrapper flex">
+                                    <label for="quantity-sorted">NÚMEROS</label>
+                                    <div class="gradient flex">
+                                        <input required type="text" value="2" id="quantity-sorted"
+                                        name="quantity-sorted" >
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input-wrapper flex">
-                                <label for="final-number-sorted">A</label>
-                                <div class="gradient flex">
-                                    <input type="text" value="100" id="final-number-sorted"
-                                    name="final-number-sorted">
+                                <div class="input-wrapper flex">
+                                    <label for="initial-number-sorted">DE</label>
+                                    <div class="gradient flex">
+                                        <input required type="text" value="1" id="initial-number-sorted"
+                                        name="initial-number-sorted">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input-toggle-wrapper">
-                                <div class="input-toggle-button-wrapper flex">
-                                    <input type="checkbox" id="select-mode" class="switch">
-                                    <label for="select-mode"></label>
+                                <div class="input-wrapper flex">
+                                    <label for="final-number-sorted">A</label>
+                                    <div class="gradient flex">
+                                        <input required type="text" value="100" id="final-number-sorted"
+                                        name="final-number-sorted">
+                                    </div>
                                 </div>
-                                <label for="toggle-button">Não repetir número</label>
-                            </div>
+                                <div class="input-toggle-wrapper">
+                                    <div class="input-toggle-button-wrapper flex">
+                                        <input type="checkbox" id="select-mode" class="switch">
+                                        <label for="select-mode"></label>
+                                    </div>
+                                    <label for="toggle-button">Não repetir número</label>
+                                </div>
 
+                            </div>
+                            <div id="bt-sorted" class="button-gradient">
+                                <button class="flex" type="submit">Sortear<img src="assets/icons/right-arow.svg" alt=""></button>
+                            </div>
                         </div>
-                        <div class="button-gradient">
-                            <button class="flex">Sortear <img src="assets/icons/right-arow.svg" alt=""></button>
+                        <div id="results" class="flex display-none opacity-0">
+                            <legend>RESULTADO SO SORTEIO</legend>
+                            <p class="overline">1º RESULTADO</p>
+                            <div id="group-drawn-numbers" class="grid">
+                                <!-- <div class="drawn-number">
+                                    <div class="inside-number">12</div>
+                                </div> -->
+                            </div>
+                            <div class="button-gradient">
+                                <button id="bt-sorted-again  opacity-0" type="button" class="flex">Sortear novamente 
+                                    <div class="image-player">
+                                        <img src="assets/icons/circle-arow.svg" alt="">
+                                        <img src="assets/icons/player.svg" alt="">
+                                    </div> 
+                                </button>
+                            </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
         </main>
     </div>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 main {
     min-width: 68.625rem;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
 
     gap: 6.75rem;
@@ -24,8 +25,10 @@ main {
         & > div {
             gap: .5rem;
             align-items: flex-start;
+        }
+    }
 
-            & .p-medium {
+    & .p-medium {
                 color: var(--content-brand);
                 font-size: var(--fs-par-md);
             }
@@ -33,10 +36,11 @@ main {
             & .p-small {
                 font-size: var(--fs-par-sm);
             }
-        }
-    }
 
     & #right-side {
+        align-items: center;
+        padding-top: 3rem;
+
         & form {
             & fieldset {
                 border: none;
@@ -49,7 +53,135 @@ main {
                 & p {
                     font-size: var(--fs-par-md);
                 }
+
+                & #configure-options {
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 2.5rem;
+                }
+            }
+            
+            & #results {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                transition: opacity 500ms ease;
+
+                & p { 
+                    margin-bottom: 2rem;
+                }
+
+                & #group-drawn-numbers {
+                    margin-bottom: 3rem;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    gap: 1.5rem;
+                    & .drawn-number {
+                        position: relative;
+                        display: flex;
+                        width: 6.25rem;
+                        height: 6.25rem;
+                        justify-content: center;
+                        align-items: center;
+                        
+                        &::after {
+                            content: "";
+                            animation: rotator 4s ease;
+                            opacity: 0;
+                            scale: 0;
+                            position: absolute;
+                            width: 6.25rem;
+                            height: 6.25rem;
+                            border-radius: 1.75rem;
+                            background-color: var(--bg-color-brand);
+                            z-index: -1;
+                        }
+                    }
+                    
+                    & .inside-number {
+                        animation: numbersGrow 3s 2s ease forwards;
+                        scale: 0;
+                        font-size: 4rem;
+                        color: var(--color-inverse);
+                        font-family: var(--ff-mono);
+                    }
+                }
+
+                & .button-gradient {
+                    transition: opacity 500ms ease;
+                    width: 100%;
+                }
             }
         }
+    }
+}
+
+@keyframes rotator {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+    30% {
+        scale: 0;
+        opacity: 0;
+    }
+
+    45% {
+        scale: 1.2;
+        opacity: 1;
+    }
+    
+    48% {
+        rotate: 0deg;
+    }
+
+    65% {
+        scale: 1.1;
+    }
+    75% {
+        rotate: 180deg;
+    }
+
+    80% {
+        scale: 1;
+        opacity: 1;
+        rotate: 180deg;
+    }
+
+    90% {
+    }
+
+    100% {
+        rotate: 180deg;
+    }
+}
+
+@keyframes numbersGrow {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    20% {
+        scale: 0;
+        opacity: 1;
+    }
+
+    35% {
+        color: var(--color-inverse);
+        scale: 1.2;
+        opacity: 1;
+    }
+    
+    80% {
+        scale: 1.2;
+    }
+
+    85% {
+        color: var(--content-brand);
+    }
+
+    100% {
+        scale: 1;
+        color: var(--content-brand);
     }
 }
