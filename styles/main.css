@@ -73,9 +73,12 @@ main {
                 }
 
                 & #group-drawn-numbers {
+                    align-items: center;
+                    justify-content: center;
                     margin-bottom: 3rem;
-                    grid-template-columns: 1fr 1fr 1fr;
                     gap: 1.5rem;
+                    flex-wrap: wrap;
+                    /* transition: transform 5s ease; */
                     & .drawn-number {
                         position: relative;
                         display: flex;

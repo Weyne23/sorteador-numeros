@@ -1,3 +1,9 @@
+@property --angle {
+    syntax: "<angle>"; /* controls values that the variable can accept: 'number' + degrees -> 180deg */
+    initial-value: 0deg; /* default value to apply */
+    inherits: false; /* default setting for custom property */
+}
+
 button {
     all: unset;
     align-items: center;
@@ -12,24 +18,51 @@ button {
     transition: background-color 200ms ease;
     &:hover {
         background-color: var(--bg-color-secondary);
+    }
+}
 
+#bt-sorted {
+    &:hover {
         & img {
             animation: arrowAnimation 1s linear infinite;
         }
     }
 }
 
+#bt-sorted-again {
+    &:hover {
+        & img[src*="circle-arrow"] {
+            animation: arrowAnimationRotate 2s linear infinite;
+        }
+    }
+    
+    gap: .7rem;
+    
+    & div{
+        position: relative;
+
+        &::after {
+           position: absolute;
+           content: "";
+           background: center/ contain no-repeat url("../assets/icons/player.svg");
+           width: .85rem;
+           height: .85rem;
+           inset: 6px;
+       }
+    }
+    
+}
+
 .button-gradient {
     padding: 2px;
     border-radius: 8px;
-    background-size: 200% 200%;
     background-color: var(--bg-color-tertiary);
 
     animation: myGradientAnimation 2s linear infinite;
 
     &:hover {
-        background-image: linear-gradient(
-            90deg,
+        background-image: conic-gradient(
+            from var(--angle),
             var(--accent-green) 0%,
             var(--accent-lime) 14.84%,
             var(--accent-red) 32.15%,
@@ -40,19 +73,21 @@ button {
 }
 
 @keyframes myGradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+    from {
+        --angle: 0deg;
+    } to {
+        --angle: 360deg;
     }
 }
 
 @keyframes arrowAnimation {
     50% {
         transform: translateX(10px);
+    }
+}
+
+@keyframes arrowAnimationRotate {
+    100% {
+        rotate: 360deg;
     }
 }

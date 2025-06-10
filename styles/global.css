@@ -57,9 +57,6 @@ body {
     padding: 4.75rem 7.5rem;
     align-items: center;
     justify-content: center;
-
-    & > div {
-    }
 }
 
 .overline {

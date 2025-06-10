@@ -7,6 +7,9 @@ const btSortedAgain = document.getElementById("bt-sorted-again");
 const form = document.querySelector("form");
 const selectMode = document.getElementById("selectMode");
 const groupDrawnNumbers = document.getElementById("group-drawn-numbers");
+const gradientAgain = document.querySelector("#results .button-gradient")
+
+const timeOut = 5000;
 
 form.onsubmit = (event) => {
     try{
@@ -27,9 +30,9 @@ form.onsubmit = (event) => {
 
         sortedNumbers(valuesForSorted);
 
-        btSortedAgain.classList.remove("opacity-0");
-        btSortedAgain.classList.add("opacity-1");
-
+        setTimeout(() => {
+            gradientAgain.classList.remove("opacity-0");
+        }, timeOut * Number(quantitySorted.value))
     }
     catch (error){
         alert(error);
@@ -38,9 +41,10 @@ form.onsubmit = (event) => {
 
 btSortedAgain.addEventListener("click", () => {
     results.classList.add("display-none");
-    results.classList.remove("opacity-1");
-    results.classList.add("opacity-0");
+    gradientAgain.classList.add("opacity-0");
     configureOptions.classList.remove("display-none");
+
+    groupDrawnNumbers.innerHTML = "";
 });
 
 quantitySorted.oninput = () => {
@@ -57,13 +61,17 @@ finalNumberSorted.oninput = () => {
 
 function sortedNumbers(values) {
     let i = 0;
-
-    do {
+    let time = 0;
+    
+    while (i < values.qtdParaSortear) {
         i++;
+
         setTimeout(() => {
             createNumbersForRandom(getRandomInt(values.desseNumero, values.ateEsseNumero));
-        },4000);
-    } while (i < values.qtdParaSortear);
+        },time);
+
+        time += timeOut;
+    }
 }
 
 function valueValidation(value) {
