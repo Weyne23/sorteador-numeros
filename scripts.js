@@ -1,15 +1,20 @@
 const results = document.getElementById("results");
+const numberSorted = document.getElementById("cont-number-sorted");
 const configureOptions = document.getElementById("configure-options");
 const quantitySorted = document.getElementById("quantity-sorted");
 const initialNumberSorted = document.getElementById("initial-number-sorted");
 const finalNumberSorted = document.getElementById("final-number-sorted");
 const btSortedAgain = document.getElementById("bt-sorted-again");
 const form = document.querySelector("form");
-const selectMode = document.getElementById("selectMode");
+const selectMode = document.getElementById("select-mode");
 const groupDrawnNumbers = document.getElementById("group-drawn-numbers");
 const gradientAgain = document.querySelector("#results .button-gradient")
+const logo = document.querySelector("header img")
 
 const timeOut = 5000;
+let countResults = 0;
+
+let drawnList = []
 
 form.onsubmit = (event) => {
     try{
@@ -21,30 +26,28 @@ form.onsubmit = (event) => {
         results.classList.remove("opacity-0");
         results.classList.add("opacity-1");
 
-        const valuesForSorted = {
-            id: new Date().getTime(),
-            qtdParaSortear: Number(quantitySorted.value),
-            desseNumero: Number(initialNumberSorted.value),
-            ateEsseNumero: Number(finalNumberSorted.value)
-        }
-
-        sortedNumbers(valuesForSorted);
-
-        setTimeout(() => {
-            gradientAgain.classList.remove("opacity-0");
-        }, timeOut * Number(quantitySorted.value))
+        createNumbers();
     }
     catch (error){
         alert(error);
     }
 }
 
-btSortedAgain.addEventListener("click", () => {
-    results.classList.add("display-none");
-    gradientAgain.classList.add("opacity-0");
-    configureOptions.classList.remove("display-none");
+// logo.addEventListener("click", () => {
+//     results.classList.add("display-none");
+//     gradientAgain.classList.add("opacity-0");
+//     configureOptions.classList.remove("display-none");
 
+//     groupDrawnNumbers.innerHTML = "";
+// });
+
+btSortedAgain.addEventListener("click", () => {
+    // results.classList.add("display-none");
+    gradientAgain.classList.add("opacity-0");
+
+    drawnList = [];
     groupDrawnNumbers.innerHTML = "";
+    createNumbers();
 });
 
 quantitySorted.oninput = () => {
@@ -67,7 +70,16 @@ function sortedNumbers(values) {
         i++;
 
         setTimeout(() => {
-            createNumbersForRandom(getRandomInt(values.desseNumero, values.ateEsseNumero));
+            let numberDraw = getRandomInt(values.desseNumero, values.ateEsseNumero);
+
+            if (selectMode.checked){
+                while(drawnList.includes(numberDraw)){
+                    numberDraw = getRandomInt(values.desseNumero, values.ateEsseNumero);
+                }
+                drawnList.push(numberDraw);
+            }
+
+            createNumbersForRandom(numberDraw);
         },time);
 
         time += timeOut;
@@ -82,16 +94,24 @@ function valueValidation(value) {
 
 function validation() {
     let qtdParaSortear = Number(quantitySorted.value);
+    let numeroInicial = Number(initialNumberSorted.value);
+    let numeroFinal = Number(finalNumberSorted.value);
 
-    if(qtdParaSortear <= 0){
+    if (qtdParaSortear <= 0){
         throw Error("Quantidade de numeros sorteados deve ser maior que Zero!");
+    }
+
+    if ((numeroFinal - numeroInicial) < 0) {
+        throw Error("Numero inicial deve ser menor ou igual ao numero final para sorteio!");
+    }
+
+    if (selectMode.checked && qtdParaSortear > (numeroFinal - numeroInicial + 1)){
+        throw Error("Quantidade de numeros sorteados deve ser maior ou igual ao intervalo entre o numero inicial e final!");
     }
 }
 
 function getRandomInt(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function createNumbersForRandom(value) {
@@ -103,4 +123,21 @@ function createNumbersForRandom(value) {
     insideNumber.textContent = value;
     drawnNumber.appendChild(insideNumber);
     groupDrawnNumbers.appendChild(drawnNumber);
+}
+
+function createNumbers() {
+    countResults++;
+    numberSorted.textContent = `${countResults}º RESULTADO`; 
+    const valuesForSorted = {
+            id: new Date().getTime(),
+            qtdParaSortear: Number(quantitySorted.value),
+            desseNumero: Number(initialNumberSorted.value),
+            ateEsseNumero: Number(finalNumberSorted.value)
+        }
+
+        sortedNumbers(valuesForSorted);
+
+        setTimeout(() => {
+            gradientAgain.classList.remove("opacity-0");
+        }, timeOut * Number(quantitySorted.value))
 }

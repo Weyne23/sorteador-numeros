@@ -12,13 +12,13 @@
 </head>
 <body class="flex">
     <div>
-        <header class="flex">
-            <img src="assets/logo.svg" alt="logo">
-            <h3>NUMBERS</h3>
-        </header>
         <main class="grid">
             <div id="left-side" class="flex">
                 <div class="title">
+                    <div id="logo" class="flex">
+                        <img src="assets/logo.svg" alt="logo">
+                        <h3>NUMBERS</h3>
+                    </div>
                     <span class="overline">ONLINE - GRATUITO</span>
                     <h1>SORTEADOR DE NÚMEROS</h1>
                 </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div id="results" class="flex display-none opacity-0">
                             <legend>RESULTADO SO SORTEIO</legend>
-                            <p class="overline">1º RESULTADO</p>
+                            <p id="cont-number-sorted" class="overline"></p>
                             <div id="group-drawn-numbers" class="flex">
                                 <!-- <div class="drawn-number">
                                     <div class="inside-number">12</div>

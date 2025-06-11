@@ -32,7 +32,7 @@ button {
 #bt-sorted-again {
     &:hover {
         & img[src*="circle-arrow"] {
-            animation: arrowAnimationRotate 2s linear infinite;
+            animation: arrowAnimationRotate 1s linear infinite;
         }
     }
     

@@ -40,6 +40,7 @@ main {
     & #right-side {
         align-items: center;
         padding-top: 3rem;
+        animation: appear 700ms ease;
 
         & form {
             & fieldset {
@@ -66,7 +67,7 @@ main {
                 align-items: center;
                 justify-content: center;
                 gap: 1rem;
-                transition: opacity 500ms ease;
+                animation: appear 700ms ease;
 
                 & p { 
                     margin-bottom: 2rem;
