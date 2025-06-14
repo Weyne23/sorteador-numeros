@@ -94,7 +94,7 @@ input {
 .input-toggle-wrapper {
     display: flex;
     gap: 1rem;
-    width: 100vh;
+    width: 15rem;
     align-items: center;
 }
 

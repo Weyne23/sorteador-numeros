@@ -29,13 +29,14 @@ main {
     }
 
     & .p-medium {
-                color: var(--content-brand);
-                font-size: var(--fs-par-md);
-            }
+        color: var(--content-brand);
+        font-size: var(--fs-par-md);
+    }
 
-            & .p-small {
-                font-size: var(--fs-par-sm);
-            }
+    & .p-small {
+        font-size: var(--fs-par-sm);
+        color: var(--content-secondary);
+    }
 
     & #right-side {
         align-items: center;
@@ -59,6 +60,12 @@ main {
                     justify-content: center;
                     flex-direction: column;
                     gap: 2.5rem;
+
+                    & .instructions {
+                        & p {
+                            color: var(--content-tertiary);
+                        }
+                    }
                 }
             }
             
@@ -187,5 +194,35 @@ main {
     100% {
         scale: 1;
         color: var(--content-brand);
+    }
+}
+
+@media (width < 50em) {
+    main {
+        gap: 0;
+        grid-template-columns: 1fr;
+        min-width: 23rem;
+        
+        & #left-side{
+            padding-top: 44px;
+            & h1 {
+                font-size: var(--fs-dp-md);
+            }
+
+            & .help {
+                display: none;
+            }
+
+            & #logo {
+                justify-self: center;
+            }
+        }
+
+        & #right-side{
+            & .help {
+                margin-block: 4.9rem;
+                display: inherit;
+            }
+        }
     }
 }
